@@ -55,6 +55,7 @@ void draw() {
   
   if(time>=0){
     time=60-millis()/1000;
+    
   }
   
   fill(255, 204, 150);
@@ -94,6 +95,13 @@ void draw() {
     textSize(90);
     textAlign(CENTER);
     text("START GAME", width * 0.5, height*0.5);
+  }
+   if (time==-1) {
+    fill(0);
+    textSize(90);
+    textAlign(CENTER);
+    text("GAME OVER", width * 0.5, height*0.5);
+    stop();
   }
 }
 
