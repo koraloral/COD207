@@ -23,6 +23,8 @@ void draw() {
   background(255);
   smooth();
   noStroke();
+  
+  
   pushMatrix();
   //translate(posx, posy);
   
@@ -45,13 +47,16 @@ void draw() {
   text("SPEED : " + speed, width - 180, 40);
 
 
-  for(float n=60;n>=0;n--){
+  
   textSize(32);
   textAlign(LEFT);
-  text("TIME : " + n, width - 180, 70);
-  println(n);
+  text("TIME : " + time, width - 180, 70);
+  time-=1;
   
+  if(time>=0){
+    time=60-millis()/1000;
   }
+  
   fill(255, 204, 150);
   ellipse(x, y, 200, 200);
   ellipse(x-100, y, 50, 50);
