@@ -9,10 +9,10 @@ class Enemy {
   float t3 = -400;
   float t4 = -400; 
 
-  float speed1 = random(2, 10);
-  float speed2 = random(2, 10);
-  float speed3 = random(2, 10);
-  float speed4 = random(2, 10);
+  float speed1 = random(4, 10);
+  float speed2 = random(8, 12);
+  float speed3 = random(4, 10);
+  float speed4 = random(8, 12);
 
   int score=0;
 
@@ -25,7 +25,7 @@ class Enemy {
     t4 = t4 + speed4;
 
     fill(0);
-    rect(r1, t1, 70, 200);
+    image(picture3,r1,t1,70,200 );
     fill(0);
     rect(r2, t2, 70, 200);
     fill(0);
@@ -36,28 +36,28 @@ class Enemy {
     if (t1>height) {
       r1 = 40;
       t1 = -200;
-      speed1 = random(2, 10);
+      speed1 = random(4, 12);
       score=score+1;
       println(score);
     }
     if (t2>height) {
       r2 = 150;
       t2 = -200;
-      speed2 = random(2, 10);
+      speed2 = random(4, 12);
       score=score+1;
       println(score);
     }
     if (t3>height) {
       r3 = 260;
       t3 = -200;
-      speed3 = random(2, 10);
+      speed3 = random(4, 12);
       score=score+1;
       println(score);
     }
     if (t4>height) {
       r4 = 370;
       t4 = -200;
-      speed4 = random(2, 10);
+      speed4 = random(4, 12);
       score=score+1;
       println(score);
     }

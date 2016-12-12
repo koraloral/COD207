@@ -1,4 +1,6 @@
 PImage picture;
+PImage picture2;
+PImage picture3;
 
 Enemy e1;
 Ship s1;
@@ -14,6 +16,8 @@ void setup() {
   noStroke();
   noCursor();
   picture = loadImage("yol.jpg");
+  picture2 = loadImage("car.png");
+  picture3 = loadImage("truck.png");
   for (int i = 0; i < drops.length; i++) {
     drops[i] = new Enemy();
     e1 = new Enemy();
