@@ -1,8 +1,9 @@
 class Ship {
-  float x = 30;
-  float y = 30;
+  float x = 60;
+  float y = 80;  
+  
   void draw(){
   fill(#FF0000);
-  ellipse(mouseX, mouseY, x, y);
+  rect(mouseX-30, mouseY-40, x, y);
   }
 }
