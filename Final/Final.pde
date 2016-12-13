@@ -1,11 +1,9 @@
 PImage picture;
 PImage picture2;
-PImage picture3;
 
-Enemy e1;
 Ship s1;
-
-int Enemies = 1;
+int score=0;
+int Enemies = 3;
 Enemy[] drops = new Enemy[Enemies];
 
 
@@ -17,46 +15,32 @@ void setup() {
   noCursor();
   picture = loadImage("yol.jpg");
   picture2 = loadImage("car.png");
-  picture3 = loadImage("truck.png");
   for (int i = 0; i < drops.length; i++) {
     drops[i] = new Enemy();
-    e1 = new Enemy();
+    drops[i].setr(40+(110*i));
+    drops[i].sett(random(-600,-200));
+
   }
   s1 = new Ship();
 }
 
 void draw() {
+  background(0);
   fill(255, 80);
   rect(0, 0, 480, 854);
   image(picture, 0, 0, width, height);
   
   for (int i = 0; i < drops.length; i++) {
-    
-    
+       
     drops[i].fall();
 
-    drops[i].getr1();
-    drops[i].getr2();
-    drops[i].getr3();
-    drops[i].getr4();
+    showScore();
+ 
 
-    drops[i].gett1();
-    drops[i].gett2();
-    drops[i].gett3();
-    drops[i].gett4();
-
-    if (mouseX+30 > drops[i].getr1() && mouseX-30 < drops[i].getr1()+70 && mouseY+40 > drops[i].gett1() && mouseY-40 < drops[i].gett1()+200) {
+    if (mouseX+30 > drops[i].getr() && mouseX-30 < drops[i].getr()+70 && mouseY+40 > drops[i].gett() && mouseY-40 < drops[i].gett()+200) {
       stop();
     }
-    if (mouseX+30 > drops[i].getr2() && mouseX-30 < drops[i].getr2()+70 && mouseY+40 > drops[i].gett2() && mouseY-40< drops[i].gett2()+200) {
-      stop();
-    }
-    if (mouseX+30 > drops[i].getr3() && mouseX-30 < drops[i].getr3()+70 && mouseY+40 > drops[i].gett3() && mouseY-40 < drops[i].gett3()+200) {
-      stop();
-    }
-    if (mouseX+30 > drops[i].getr4() && mouseX-30 < drops[i].getr4()+70 && mouseY+40 > drops[i].gett4() && mouseY-40 < drops[i].gett4()+200) {
-      stop();
-    }
+   
   }
     if (mouseX+30 > 480){
       mouseX = 450;
@@ -71,4 +55,11 @@ void draw() {
       mouseY = 814;
     }
   s1.draw();
+  
+}
+void showScore(){
+fill(255, 0, 0);
+    textSize(32);
+    textAlign(CENTER);
+    text("Score: " + score, width -240, 80);
 }
