@@ -3,7 +3,7 @@ class Enemy {
   float r = 40;
   float t = -400;
   float speed1 = random(5,20);
-  String []vehicle={"truck.png", "truck2.png", "truck3.png"};
+  String []vehicle={"truck.png", "truck2.png", "truck3.png","truck4.png","truck5.png"};
 
   Enemy() {
     int index=int(random(0, vehicle.length));

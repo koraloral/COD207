@@ -4,6 +4,7 @@ Minim min;
 AudioPlayer start;
 AudioPlayer play;
 AudioPlayer end;
+AudioPlayer hit;
 
 PImage picture;
 PImage picture2;
@@ -41,7 +42,9 @@ void setup() {
   start = min.loadFile("Beauty-motivational-music.mp3");
   play = min.loadFile("Casual-friday-electronic-beat-music.mp3");
   end = min.loadFile("Sad-instrumental-music.mp3");
-
+  hit =min.loadFile("CarHit.wav");
+  
+  
   picture = loadImage("yol.jpg");
   picture2 = loadImage("car.png");
 
@@ -123,6 +126,8 @@ void draw() {
 
       if (mouseX+35 > drops[i].getr() && mouseX-35 < drops[i].getr()+70 && mouseY+40 > drops[i].gett() && mouseY-40 < drops[i].gett()+200) {
         failState = true;
+        hit.rewind();
+        hit.play();
       }
     }
     if (mouseX+30 > 480) {
@@ -157,6 +162,7 @@ void draw() {
     play.pause();
     end.play();
 
+
     initGame();
     cursor();
     pushStyle();
@@ -188,7 +194,10 @@ void draw() {
     textAlign(CENTER);
     text("RESTART", width * 0.5, height*0.5 + 15);
     popStyle();
+   
+    s1.GenerateCar();
   }
+  
 }
 
 void showScore() {
