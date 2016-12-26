@@ -10,6 +10,9 @@ PImage picture;
 PImage picture2;
 
 PFont startFont;
+PFont scoreFont;
+PFont overFont;
+
 
 Ship s1;
 
@@ -39,17 +42,19 @@ void setup() {
   noStroke();
 
   min = new Minim(this);
-  start = min.loadFile("Beauty-motivational-music.mp3");
-  play = min.loadFile("Casual-friday-electronic-beat-music.mp3");
-  end = min.loadFile("Sad-instrumental-music.mp3");
+  start = min.loadFile("Hallelujah.mp3");
+  play = min.loadFile("Through The Fire And Flames.mp3");
+  end = min.loadFile("Another One Bites The Dust.mp3");
   hit =min.loadFile("CarHit.wav");
-  
-  
+
+
   picture = loadImage("yol.jpg");
   picture2 = loadImage("car.png");
 
-  startFont = createFont("BLACEB__.TTF", 32);
-  textFont(startFont);
+  startFont = createFont("Dynamix.ttf", 32);
+  scoreFont = createFont("STJEDISE.TTF", 32);
+  overFont = createFont("BloodLust.ttf", 32);
+
 
   for (int i = 0; i < drops.length; i++) {
     drops[i] = new Enemy();
@@ -91,7 +96,7 @@ void draw() {
       fill(0, 255, 0);
     }
     if (buttonState == false) {
-      fill(255, 0, 0);
+      fill(#FFD12A);
     }
     if (mouseState == false) {
       rect( x1, y1, w1, h1);
@@ -103,9 +108,9 @@ void draw() {
       pushStyle();
       fill(0);
       textFont(startFont);
-      textSize(35);
+      textSize(26);
       textAlign(CENTER);
-      text("START GAME", width * 0.5, height*0.5 + 15);
+      text("START GAME", width * 0.5, height*0.5 + 10);
       popStyle();
     }
   }
@@ -163,14 +168,14 @@ void draw() {
     end.play();
 
 
-    initGame();
+
     cursor();
     pushStyle();
     fill(0);
-    textFont(startFont);
-    textSize(70);
+    textFont(overFont);
+    textSize(100);
     textAlign(CENTER);
-    text("GAME OVER", width * 0.5, height*0.5 - 50);
+    text("GAME OVER", width * 0.5, height*0.5 - 150);
     popStyle();
 
     pushMatrix();
@@ -179,7 +184,7 @@ void draw() {
       fill(0, 255, 0);
     }
     if (buttonState == false) {
-      fill(255, 0, 0);
+      fill(#FFD12A);
     }
     if (mouseState == false) {
       rect( x1, y1, w1, h1);
@@ -194,16 +199,21 @@ void draw() {
     textAlign(CENTER);
     text("RESTART", width * 0.5, height*0.5 + 15);
     popStyle();
-   
+
+    fill(0);
+    textSize(60);
+    textAlign(CENTER);
+    text("Score: " + score, width -240, 600);
+
     s1.GenerateCar();
   }
-  
 }
 
 void showScore() {
   if (scene2 == true && scene3 == false) {
-    fill(255, 0, 0);
-    textSize(32);
+    fill(0);
+    textSize(40);
+    textFont(scoreFont);
     textAlign(CENTER);
     text("Score: " + score, width -240, 80);
   }
@@ -211,6 +221,7 @@ void showScore() {
 
 void mouseReleased() {
   if (buttonState == true) {
+    initGame();
     mouseState = true;
     scene1 = false;
     scene2 = true;
